@@ -1,0 +1,39 @@
+@import 'reset'
+ 
+//Mixins
+
+@mixin leagueGothic
+	font-family: 'League Gothic'
+	line-height: 100%
+	text-rendering: optimizeLegibility
+
+@mixin clear
+	overflow: hidden
+
+@mixin round-corners($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	-khtml-border-radius: $radius
+	border-radius: $radius
+	padding: $radius
+	
+@mixin layout($columns, $width, $padding)
+	width: $width/$columns - ($padding)
+	padding-right: $padding 
+	
+@mixin box-shadow($value)
+	-moz-box-shadow: $value  
+	-webkit-box-shadow: $value
+	box-shadow: $value
+
+@mixin letterpress($offset)
+	text-shadow: 0 $offset $offset #FFFFFF
+
+@mixin button($radius)
+	display: block
+	text-align: center
+	@include round-corners($radius)
+	padding: 10px 5px
+
+body
+	font-family:  Helvetica, Arial, sans-serif
