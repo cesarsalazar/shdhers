@@ -40,15 +40,7 @@ get '/new' do
 end
 
 post '/new' do
-  @user = User.new( :first_name => params[:first_name],
-                    :last_name => params[:last_name],
-                    :username => params[:username],
-                    :email => params[:email],
-                    :twitter => params[:twitter],
-                    :github => params[:github],
-                    :expertise => params[:expertise],
-                    :interests => params[:interests] 
-                  )
+  @user = User.new( params[:user] )
 
   if @user.save
     redirect "/#{@user.username}" 
@@ -70,13 +62,13 @@ end
 post '/:username/edit' do
   @user = User.first(params[:username])
   if @user.update(  :first_name => params[:first_name],
-                         :last_name => params[:last_name],
-                         :username => params[:username],
-                         :email => params[:email],
-                         :twitter => params[:twitter],
-                         :github => params[:github],
-                         :expertise => params[:expertise],
-                         :interests => params[:interests])
+                    :last_name => params[:last_name],
+                    :username => params[:username],
+                    :email => params[:email],
+                    :twitter => params[:twitter],
+                    :github => params[:github],
+                    :expertise => params[:expertise],
+                    :interests => params[:interests] )
     redirect "/#{@user.username}/edit"
   else
     redirect "/#{@user.username}"

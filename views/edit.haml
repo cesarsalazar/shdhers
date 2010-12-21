@@ -1,0 +1,34 @@
+%h1 Edit your profile
+%form{:action => 'new', :method => 'post'}
+  %fieldset
+    %h2 Basic information
+    #username
+      %label{:for => 'username'} Username
+      %input.text{:type => 'text', :name => 'username', :value => "#{user.username}"}
+    #first_name
+      %label{:for => 'first_name'} First name
+      %input.text{:type => 'text', :name => 'first_name', :value => "#{user.first_name}"}
+    #last_name
+      %label{:for => 'last_name'} Last name
+      %input.text{:type => 'text', :name => 'last_name', :value => "#{user.last_name}"}
+    #email
+      %label{:for => 'email'} Email
+      %input.text{:type => 'text', :name => 'email', :value => "#{user.email}"}
+  %fieldset
+    %h2 Profiles
+    #twitter
+      %label{:for => 'twitter'} Twitter
+      %input.text{:type => 'text', :name => 'twitter', :value => "#{user.twitter}"}
+    #github
+      %label{:for => 'github'} Github
+      %input.text{:type => 'text', :name => 'github', :value => "#{user.github}"}
+  %fieldset
+    %h2 Background
+    #interests
+      %label{:for => 'interests'} Interests
+      %input.text{:type => 'text', :name => 'interests', :value => "#{user.interests}"}
+    #experience
+      %label{:for => 'experience'} Experience
+      %input.text{:type => 'text', :name => 'experience', :value => "#{user.experience}"}
+  %fieldset.submit
+    %input.submit{:type => 'submit', :value => 'submit'}

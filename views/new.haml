@@ -1,15 +1,16 @@
+%h1 Create a new profile
 %form{:action => 'new', :method => 'post'}
   %fieldset
     %h2 Basic information
     #username
       %label{:for => 'username'} Username
-      %input.text{:type => 'text', :name => 'username'}
+      %input.text{:type => 'text', :name => 'user[username]'}
     #first_name
       %label{:for => 'first_name'} First name
-      %input.text{:type => 'text', :name => 'first_name'}
+      %input.text{:type => 'text', :name => 'user[first_name]'}
     #last_name
       %label{:for => 'last_name'} Last name
-      %input.text{:type => 'text', :name => 'last_name'}
+      %input.text{:type => 'text', :name => 'user[last_name]'}
     #email
       %label{:for => 'email'} Email
       %input.text{:type => 'text', :name => 'email'}
