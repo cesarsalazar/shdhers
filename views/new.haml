@@ -35,21 +35,32 @@
         %span.number 2.
         %span How can people find more about you?
       #twitter.field
-        %label{:for => 'twitter'} Twitter
-        %input.text{:type => 'text', :name => 'user[twitter]'}
+        %p
+          %span.http http://twitter.com/
+          %input.text{:type => 'text', :name => 'user[twitter]'}
       #github.field
-        %label{:for => 'github'} Github
-        %input.text{:type => 'text', :name => 'user[github]'}
+        %p
+          %span.http http://github.com/
+          %input.text{:type => 'text', :name => 'user[github]'}
       #personal.field
-        %label{:for => 'github'} Personal website (or any other personal page)
-        %input.text{:type => 'text', :name => 'user[personal]'}
+        %p
+          %span.http http://
+          %input.text{:type => 'text', :name => 'user[personal]'}
     %fieldset
-      %h2 Background
+      %h2 
+        %span.number 3.
+        %span What are you interested in?
       #interests.field
-        %label{:for => 'interests'} Interests
+        %label{:for => 'interests'} Interest Tags
         %ul#interests_field.taggable
+        %p.note Maybe you're not super experienced at some of these, but you're willing to learn
+    %fieldset 
+      %h2 
+        %span.number 4.
+        %span What do you have experience at? 
       #expertise.field
-        %label{:for => 'experience'} Expertise
+        %label{:for => 'experience'} Expertise Tags
         %ul#expertise_field.taggable
+        %p.note Maybe you're not super excited about some of these, but you can always help others
     %fieldset.submit
       %input.submit{:type => 'submit', :value => 'Create Profile'}

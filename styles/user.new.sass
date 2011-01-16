@@ -1,5 +1,16 @@
 @import 'global'
 
+fieldset
+  margin-bottom: 2em
+
+h2
+  @include numbered-heading
+  margin-bottom: 0.5em
+
+.http
+  font-size: 1.2em
+  color: $gray
+  
 #name
   overflow: hidden
   .composite
@@ -14,6 +25,18 @@
   width: 500px
   input
     width: 90%
+
+#twitter
+  margin-top: 2em
+    
+#twitter, #github, #personal
+  span
+    display: inline-block
+    width: 180px
+    text-align: right
+  input.text
+    font-size: 1.2em !important
+    width: 250px
     
 #interests, #expertise
   width: 700px
