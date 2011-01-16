@@ -1,2 +1,15 @@
-%h1 #{@user.username}
+%h1= @user.slug
+%p
+  %span= @user.first_name
+  %span= @user.last_name
 %p http://twitter.com/#{@user.twitter}
+%h2 Interests
+- unless @user.interests.nil?
+  %ul
+  - @user.interests.each do |i|
+    %li= i
+%h2 Expertise
+- unless @user.expertise.nil?
+  %ul
+  - @user.expertise.each do |i|
+    %li= i

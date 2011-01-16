@@ -1,34 +1,55 @@
-%h1 Create a new profile
-%form{:action => 'new', :method => 'post'}
-  %fieldset
-    %h2 Basic information
-    #username
-      %label{:for => 'username'} Username
-      %input.text{:type => 'text', :name => 'user[username]'}
-    #first_name
-      %label{:for => 'first_name'} First name
-      %input.text{:type => 'text', :name => 'user[first_name]'}
-    #last_name
-      %label{:for => 'last_name'} Last name
-      %input.text{:type => 'text', :name => 'user[last_name]'}
-    #email
-      %label{:for => 'email'} Email
-      %input.text{:type => 'text', :name => 'user[email]'}
-  %fieldset
-    %h2 Profiles
-    #twitter
-      %label{:for => 'twitter'} Twitter
-      %input.text{:type => 'text', :name => 'user[twitter]'}
-    #github
-      %label{:for => 'github'} Github
-      %input.text{:type => 'text', :name => 'user[github]'}
-  %fieldset
-    %h2 Background
-    #interests
-      %label{:for => 'interests'} Interests
-      %input.text{:type => 'text', :name => 'user[interests]'}
-    #experience
-      %label{:for => 'experience'} Experience
-      %input.text{:type => 'text', :name => 'user[expertise]'}
-  %fieldset.submit
-    %input.submit{:type => 'submit', :value => 'submit'}
+- content_for :head do
+  %link{:rel => 'stylesheet', :href => '/stylesheets/user.new.css', :type => 'text/css', :media => 'all'}
+  %link{:rel => 'stylesheet', :href => '/stylesheets/jquery.ui.autocomplete.custom.css', :type => 'text/css', :media => 'all'}
+  %script{:src => '/javascripts/jquery-ui-1.8.core-and-interactions.min.js', :type => 'text/javascript'}
+  %script{:src => '/javascripts/jquery-ui-1.8.autocomplete.min.js', :type => 'text/javascript'}
+  %script{:src => '/javascripts/tag.js', :type => 'text/javascript'}
+  %script{:src => '/javascripts/validate_unique.js', :type => 'text/javascript'}
+  
+
+#content
+  %h1 Create a new profile
+  %form{:action => 'new', :method => 'post'}
+    %fieldset
+      %h2 
+        %span.number 1.
+        %span Provide some basic information
+      #name.field
+        %label{:for => 'first_name'} Name
+        .composite
+          %input.text{:type => 'text', :name => 'user[first_name]'}
+          %p.note First Name
+        .composite
+          %input.text{:type => 'text', :name => 'user[last_name]'}
+          %p.note Last Name        
+      #slug.field
+        %label{:for => 'username'} Slug
+        %input.text{:type => 'text', :name => 'user[slug]'}
+        %p.note This is your unique URL
+      #email.field
+        %label{:for => 'email'} Email
+        %input.text{:type => 'text', :name => 'user[email]'}
+        %p.note Private and spamless. We promise.
+    %fieldset
+      %h2 
+        %span.number 2.
+        %span How can people find more about you?
+      #twitter.field
+        %label{:for => 'twitter'} Twitter
+        %input.text{:type => 'text', :name => 'user[twitter]'}
+      #github.field
+        %label{:for => 'github'} Github
+        %input.text{:type => 'text', :name => 'user[github]'}
+      #personal.field
+        %label{:for => 'github'} Personal website (or any other personal page)
+        %input.text{:type => 'text', :name => 'user[personal]'}
+    %fieldset
+      %h2 Background
+      #interests.field
+        %label{:for => 'interests'} Interests
+        %ul#interests_field.taggable
+      #expertise.field
+        %label{:for => 'experience'} Expertise
+        %ul#expertise_field.taggable
+    %fieldset.submit
+      %input.submit{:type => 'submit', :value => 'Create Profile'}

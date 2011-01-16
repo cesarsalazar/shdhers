@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   remote: http://rubygems.org/
-  remote: http://rubygems.org/
   specs:
     addressable (2.2.2)
     backports (1.18.2)
@@ -10,15 +9,23 @@ GEM
       extlib (~> 0.9.15)
     dm-migrations (1.0.2)
       dm-core (~> 1.0.2)
+    dm-serializer (1.0.2)
+      dm-core (~> 1.0.2)
+      fastercsv (~> 1.5.3)
+      json_pure (~> 1.4)
     dm-timestamps (1.0.2)
       dm-core (~> 1.0.2)
     dm-validations (1.0.2)
       dm-core (~> 1.0.2)
     extlib (0.9.15)
+    fastercsv (1.5.3)
     haml (3.0.25)
+    json_pure (1.4.6)
     monkey-lib (0.5.4)
       backports
     rack (1.2.1)
+    rack-flash (0.1.1)
+      rack
     sass (3.1.0.alpha.214)
     sinatra (1.1.2)
       rack (~> 1.1)
@@ -27,6 +34,11 @@ GEM
       monkey-lib (~> 0.5.0)
       sinatra (~> 1.0)
       sinatra-sugar (~> 0.5.0)
+    sinatra-content-for (0.2)
+      sinatra
+    sinatra-redirect-with-flash (0.1.2)
+      rack-flash (>= 0.1.1)
+      sinatra (>= 0.9.1)
     sinatra-reloader (0.5.0)
       sinatra (~> 1.0)
       sinatra-advanced-routes (~> 0.5.0)
@@ -41,9 +53,12 @@ PLATFORMS
 DEPENDENCIES
   dm-core
   dm-migrations
+  dm-serializer
   dm-timestamps
   dm-validations
   haml
   sass
   sinatra
+  sinatra-content-for
+  sinatra-redirect-with-flash
   sinatra-reloader
