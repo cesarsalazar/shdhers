@@ -57,7 +57,8 @@ end
 # === Home ===============================
 
 get '/' do
-  haml :index
+  
+  haml :index, :layout => false
 end
 
 # === Users ===============================
@@ -99,7 +100,7 @@ end
 
 post '/:slug/edit' do
   @user = User.get(params[:slug])
-  if @user.update( params[:user] )
+  if @user.update(params[:user])
     redirect "/#{@user.username}/edit"
   else
     redirect "/#{@user.username}"
@@ -149,6 +150,11 @@ post '/tags/new' do
 		@tag = Tag.first_or_create(:name => t)	
 	end
 	redirect '/'
+end
+
+get '/tags/:t' do
+  @users = User.all(:interests => params[:t])
+  haml :tag
 end
 
 # === Styles ===============================

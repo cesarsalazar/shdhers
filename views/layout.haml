@@ -1,11 +1,16 @@
 !!! Strict
 %html{ :xmlns => "http://www.w3.org/1999/xhtml" }
-	%head
-		%title
-			= @title || 'SHDHers'
-		%meta{ :'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
-		%link{:rel => 'stylesheet', :href => 'http://fonts.googleapis.com/css?family=Ubuntu', :type => 'text/css'}
-		%script{ :src => 'http://code.jquery.com/jquery-1.4.4.min.js', :type => 'text/javascript' }
-		= yield_content :head
-	%body
-		= yield
+  %head
+    %title
+      = @title || 'SHDHers | A simple, yet comprehensive directory of SHDH participants.'
+    %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+    %link{:rel => 'stylesheet', :href => 'http://fonts.googleapis.com/css?family=Ubuntu', :type => 'text/css'}
+    %script{ :src => 'http://code.jquery.com/jquery-1.4.4.min.js', :type => 'text/javascript' }
+    = yield_content :head
+  %body
+    #header
+      %img#logo{:src => '/images/logo_50px.png'}
+      %p 
+        %span A simple, yet comprehensive directory of 
+        %a{:href => '/list'} SHDH participants.
+    = yield

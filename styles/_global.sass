@@ -4,11 +4,30 @@ body
   font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif
   color: $black
   font-size: 15px
+  background: transparent url('/images/gray_ribbon.png') repeat-x scroll 0 1em
+  &.home
+    background: transparent
+  
+  a
+    color: $brand
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+      
+  #header
+    @include main-content
+    background-color: transparent
+    padding: 0.5em
+    #logo
+      float: left
+    p
+      margin-top: 1em
+      text-align: right
+    
   
   #content
-    @include main-content
+    @include main-content(800px)
     @include input_large
-    
     h1
       font-size: 3em
       font-family: "Ubuntu", Helvetica, Arial, Verdana, sans-serif
