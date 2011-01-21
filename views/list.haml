@@ -1,4 +1,20 @@
-%h1 Users
-%ul
-- @users.each do |user|
-  %li #{user.username}
+- content_for :head do
+  %link{:rel => 'stylesheet', :href => '/stylesheets/user.list.css', :type => 'text/css', :media => 'all'}
+  
+#content
+  %h1 Participants
+  %ul.users
+    - @users.each do |user|
+      %li.user
+        .name
+          %a{:href => '/'+user.slug}= [user.first_name, user.last_name].join(' ');
+        - unless user.interests.nil?
+          .interests
+            %h3 Interests
+            - user.interests.each do |interest|
+              %a{:href => '/tags/'+interest}= interest
+        - unless user.expertise.nil?
+          .expertise
+            %h3 Expertise
+            - user.expertise.each do |experience|
+              %a{:href => '/tags/'+experience}= experience

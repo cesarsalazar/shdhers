@@ -1,15 +1,35 @@
-%h1= @user.slug
-%p
-  %span= @user.first_name
-  %span= @user.last_name
-%p http://twitter.com/#{@user.twitter}
-%h2 Interests
-- unless @user.interests.nil?
-  %ul
-  - @user.interests.each do |i|
-    %li= i
-%h2 Expertise
-- unless @user.expertise.nil?
-  %ul
-  - @user.expertise.each do |i|
-    %li= i
+- content_for :head do
+  %link{:rel => 'stylesheet', :href => '/stylesheets/user.show.css', :type => 'text/css', :media => 'all'}
+
+#content
+  %h1
+    %span= @user.first_name
+    %span= @user.last_name
+  #about
+    %h2 Find out more about me here:
+    #twitter
+      %h3 Twitter
+      %p 
+        %a{:href => 'http://twitter.com/'+@user.twitter, :target => 'blank'} http://twitter.com/#{@user.twitter}
+    #github
+      %h3 Github
+      %p
+        %a{:href => 'http://github.com/'+@user.github, :target => 'blank'} http://github.com/#{@user.github}
+    #personal
+      %h3 Personal website
+      %p 
+        %a{:href => 'http://'+@user.personal, :target => 'blank'} http://#{@user.personal}
+  #interests
+    %h2 I'm curious about:
+    - unless @user.interests.nil?
+      %ul
+      - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
+        %li
+          %a{:href => '/tags/'+interest}= interest
+  #expertise
+    %h2 I've experience in: 
+    - unless @user.expertise.nil?
+      %ul
+      - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
+        %li
+          %a{:href => '/tags/'+experience}= experience
