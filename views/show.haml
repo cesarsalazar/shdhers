@@ -7,18 +7,21 @@
     %span= @user.last_name
   #about
     %h2 Find out more about me here:
-    #twitter
-      %h3 Twitter
-      %p 
-        %a{:href => 'http://twitter.com/'+@user.twitter, :target => 'blank'} http://twitter.com/#{@user.twitter}
-    #github
-      %h3 Github
-      %p
-        %a{:href => 'http://github.com/'+@user.github, :target => 'blank'} http://github.com/#{@user.github}
-    #personal
-      %h3 Personal website
-      %p 
-        %a{:href => 'http://'+@user.personal, :target => 'blank'} http://#{@user.personal}
+    - unless @user.twitter.nil? 
+      #twitter
+        %h3 Twitter
+        %p 
+          %a{:href => 'http://twitter.com/'+@user.twitter, :target => 'blank'} http://twitter.com/#{@user.twitter}
+    - unless @user.github.nil?        
+      #github
+        %h3 Github
+        %p
+          %a{:href => 'http://github.com/'+@user.github, :target => 'blank'} http://github.com/#{@user.github}
+    - unless @user.personal.nil? 
+      #personal
+        %h3 Personal website
+        %p 
+          %a{:href => 'http://'+@user.personal, :target => 'blank'} http://#{@user.personal}
   #interests
     %h2 I'm curious about:
     - unless @user.interests.nil?

@@ -56,8 +56,7 @@ end
 
 # === Home ===============================
 
-get '/' do
-  
+get '/' do 
   haml :index, :layout => false
 end
 
@@ -69,7 +68,6 @@ get '/new' do
 end
 
 post '/new' do
-  
   @interests = params[:user][:interests] || []
   @expertise = params[:user][:expertise] || []
   @tags =  @interests + @expertise
