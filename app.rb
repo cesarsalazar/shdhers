@@ -84,7 +84,7 @@ end
 
 
 #Show all
-get '/list' do
+get '/all' do
   @users = User.all
   haml :list
 end
