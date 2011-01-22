@@ -25,14 +25,14 @@
   - unless @user.interests.nil?
     #interests
       %h2 I'm curious about:
-        %ul
-        - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
-          %li
-            %a{:href => '/tags/'+interest}= interest
+      %ul
+      - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
+        %li
+          %a{:href => '/tags/'+interest}= interest
   - unless @user.expertise.nil?
     #expertise
       %h2 I've experience in: 
-        %ul
-        - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
-          %li
-            %a{:href => '/tags/'+experience}= experience
+      %ul
+      - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
+        %li
+          %a{:href => '/tags/'+experience}= experience
