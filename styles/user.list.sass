@@ -1,15 +1,25 @@
 @import 'global'
 
 #content
-  h1
-    margin-bottom: 1em !important
+  #search
+    background: $light_gray
+    padding: 1em 4em
+    @include round-corners
+    overflow: hidden
+    label
+      font-size: 1.2em
+      float: left
+    input
+      font-size: 1.2em
+      width: 70%
+      
   .user
     margin-bottom: 1em
     border-bottom: 1px solid $light_gray
     padding: 0.5em
     &:first-child
       padding-top: 1.5em
-      border-top: 1px solid $light_gray
+      //border-top: 1px solid $light_gray
     
   .name
     font-size: 1.3em
