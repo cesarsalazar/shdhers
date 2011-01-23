@@ -7,39 +7,44 @@ body
   background: transparent url('/images/gray_ribbon.png') repeat-x scroll 0 1em
   &.home
     background: transparent
-  
-  a
-    color: $brand
-    text-decoration: none
-    &:hover
-      text-decoration: underline
-      
-  #header
-    @include main-content
-    background-color: transparent
-    padding: 0.5em
-    #logo
-      float: left
-    p
-      margin-top: 1em
-      text-align: right
-    
-  
-  #content
-    @include main-content(800px)
-    @include input_large
-    h1
-      font-size: 3em
-      font-family: "Ubuntu", Helvetica, Arial, Verdana, sans-serif
-      letter-spacing: -0.05em
-      color: $brand
-      margin-bottom: 0.5em
 
-    h3
-      font-size: 0.8em
-      font-weight: normal
-      text-transform: uppercase
-      color: $gray
-      margin-bottom: 0.5em
-      
-      
+a
+  color: $brand
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+    
+#header
+  @include main-content
+  background-color: transparent
+  padding: 0.5em
+  #logo
+    float: left
+  p
+    margin-top: 1em
+    text-align: right
+  
+
+#content
+  @include main-content(800px)
+  @include input_large
+  h1
+    font-size: 3em
+    font-family: "Ubuntu", Helvetica, Arial, Verdana, sans-serif
+    letter-spacing: -0.05em
+    color: $brand
+    margin-bottom: 0.5em
+  h2
+    font-size: 2em
+    font-family: "Ubuntu", Helvetica, Arial, Verdana, sans-serif
+    letter-spacing: -0.05em
+    color: $light_contrast
+    
+  h3
+    font-size: 0.7em
+    font-weight: normal
+    text-transform: uppercase
+    color: $gray
+    margin-bottom: 0.5em
+    
+    

@@ -12,9 +12,9 @@
           .interests
             %h3 Interests
             - user.interests.each do |interest|
-              %a{:href => '/tags/'+interest}= interest
+              %a.tag{:href => '/tags/'+interest}= interest
         - unless user.expertise.nil?
           .expertise
             %h3 Expertise
             - user.expertise.each do |experience|
-              %a{:href => '/tags/'+experience}= experience
+              %a.tag{:href => '/tags/'+experience}= experience

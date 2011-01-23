@@ -6,7 +6,7 @@
     %span= @user.first_name
     %span= @user.last_name
   #about
-    %h2 Find out more about me here:
+    %h2 Find out more about me here
     - unless @user.twitter.length < 1 
       #twitter
         %h3 Twitter
@@ -24,14 +24,14 @@
           %a{:href => 'http://'+@user.personal, :target => 'blank'} http://#{@user.personal}
   - unless @user.interests.nil?
     #interests
-      %h2 I'm curious about:
+      %h2 I'm curious about
       %ul
       - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
         %li
           %a{:href => '/tags/'+interest}= interest
   - unless @user.expertise.nil?
     #expertise
-      %h2 I've experience in: 
+      %h2 I've experience in
       %ul
       - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
         %li

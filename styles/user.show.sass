@@ -1,30 +1,47 @@
 @import 'global'
 
 #content
+  #about
+    border-bottom: 1px solid $light_gray
   #about, #interests, #expertise
     margin-bottom: 1em
-    border-bottom: 1px solid $light_gray
     padding: 1em 0.5em
   #twitter, #github, #personal
     margin-bottom: 1em
+    background-position: 5px 0
+    background-repeat: no-repeat
+    padding-left: 2.5em
+    
     h3
+      padding-top: 0.2em
       margin-bottom: 0.2em
     a
       color: $black
       text-decoration: none
       &:hover
         text-decoration: underline
+  #twitter
+    background-image: url('/images/twitter_icon.png')
+  #github
+    background-image: url('/images/octocat_icon.png')
+  #personal
+    background-image: url('/images/globe_icon.png')
   h2
     margin-bottom: 1em
   p, li
     line-height: 1.5em
   li
-    list-style: circle inside
+    list-style: none 
+    background: transparent url('/images/tag_icon_bw.png') scroll no-repeat 0 50%
+    padding-left: 2em
     a
       color: $brand
       text-decoration: none
       &:hover
         text-decoration: underline
+  #interests, #expertise
+    float: left
+    width: 48%
   
 
     
