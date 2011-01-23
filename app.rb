@@ -85,7 +85,12 @@ end
 #Show all
 get '/all' do
   @users = User.all(:order => [ :created_at.desc ])
-  haml :list
+  unless params[:format] == 'json'
+    haml :list
+  else
+    content_type :json, 'charset' => 'utf-8'
+    @users.to_json
+  end
 end
 
 
@@ -127,7 +132,12 @@ end
 #Show single
 get '/:slug' do
   if @user = User.get(params[:slug])
-    haml :show
+    unless params[:format] == 'json'
+      haml :show
+    else
+      content_type :json, 'charset' => 'utf-8'
+      @user.to_json
+    end
   else
     halt 404
   end
