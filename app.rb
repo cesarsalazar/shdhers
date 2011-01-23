@@ -51,7 +51,7 @@ DataMapper.auto_upgrade!
 # === Errors ===============================
 
 not_found do
-  haml :e404
+  haml :e404, :layout => false
 end
 
 # === Home ===============================
