@@ -31,7 +31,6 @@ class User
   property :expertise,        Object
   property :interests,        Object
   property :created_at,       DateTime
-  property :created_at,       DateTime
   property :updated_at,       DateTime
 
 end
@@ -76,7 +75,7 @@ post '/new' do
 	end
   @user = User.new(params[:user])
   if @user.save
-    redirect "/#{@user.slug}" 
+    redirect "/all" 
   else
     redirect "/new", :notice => 'Something went wrong'
   end
@@ -85,7 +84,7 @@ end
 
 #Show all
 get '/all' do
-  @users = User.all
+  @users = User.all(:order => [ :created_at.desc ])
   haml :list
 end
 
