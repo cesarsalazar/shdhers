@@ -14,19 +14,21 @@
       width: 70%
       
   .user
-    margin-bottom: 1em
+    margin-bottom: 0
+    margin-top: 0
     border-bottom: 1px solid $light_gray
     padding: 0.5em
     &:first-child
       padding-top: 1.5em
-      //border-top: 1px solid $light_gray
     
   .name
+    background: transparent url('/images/user_icon.png') no-repeat scroll 0 5px
+    padding-left: 1.5em
     font-size: 1.3em
+    line-height: 1.5
     float: left
     a
       text-decoration: none
-      color: $black
       &:hover
         text-decoration: underline
   .interests, .expertise
@@ -45,5 +47,9 @@
       &:hover
         color: $brand
         background-color: $light_brand
+
+li.user > div:last-child
+  margin-bottom: 0 !important
+      
 
   
