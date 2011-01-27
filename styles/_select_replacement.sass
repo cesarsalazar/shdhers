@@ -1,0 +1,28 @@
+.ui-selectmenu, .ui-selectmenu-focus, .ui-state-hover
+  text-decoration: none !important
+  
+.ui-selectmenu
+  @include round-corners(3px)
+  background:  $light_gray
+  border: 1px solid $mild_gray
+  color: $black
+  a
+    text-decoration: none
+  
+.ui-selectmenu-menu-dropdown
+  border: 1px solid $mild_gray
+  background: $white
+  li
+    a
+      color: $black
+    &:hover
+      background:  $light_gray
+
+.ui-icon-triangle-1-s
+  background-image: url('/images/jqueryui-icons.png')
+  background-position: -64px -16px
+  display: block
+  height: 15px
+  width: 15px
+  
+  
