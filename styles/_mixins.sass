@@ -176,6 +176,13 @@
   &:hover
     background-color: #CCC
 
+@mixin button-contrast
+  background-color: #EEE
+  &:hover
+    color: #FFF
+    @include letterpress(-1px,1px,#000)
+    background-color: $contrast
+
 @mixin button($radius)
   display: block
   text-align: center

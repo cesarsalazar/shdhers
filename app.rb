@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'rack-flash'
 require 'sinatra'
 require 'sinatra/content_for'
 require 'sinatra/redirect_with_flash'
@@ -11,6 +12,8 @@ require 'dm-migrations'
 require 'dm-timestamps'
 require 'dm-serializer/to_json'
 
+use Rack::Flash
+enable :sessions
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/shdhers.sqlite3")
 
@@ -30,6 +33,7 @@ class User
   property :personal,         String
   property :expertise,        Object
   property :interests,        Object
+  property :location,         String
   property :created_at,       DateTime
   property :updated_at,       DateTime
 
@@ -42,7 +46,7 @@ class Tag
 	property :id,			Serial
 	property :name, 	String, 	:required => true,	:unique => true
 	
-end
+end     
 
 DataMapper.auto_upgrade!
 
@@ -73,6 +77,11 @@ post '/new' do
 	@tags.each do |t|
 		@tag = Tag.first_or_create(:name => t)	
 	end
+	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","interests","experience","location"].each do |s|
+	  if s == params[:user][:slug]
+	    redirect "/new", :notice => 'You are trying to use a reserved word as slug'
+    end
+  end
   @user = User.new(params[:user])
   if @user.save
     redirect "/all" 
@@ -162,6 +171,32 @@ end
 get '/tags/:t' do
   @users = User.all(:interests => params[:t])
   haml :tag
+end
+
+# === Locations ===========================
+
+get '/locations/all' do
+  @locations  =  [{ :slug => 'mexico-city', :name => 'Mexico City'},
+                  { :slug => 'sv', :name => ' Silicon Valley (original)'},
+                  { :slug => 'guanajuato', :name => 'Guanajuato'},
+                  { :slug => 'villahermosa', :name => 'Villahermosa'},
+                  { :slug => 'dc', :name => 'Washington, DC'},
+                  { :slug => 'hermosillo', :name => 'Hermosillo'},
+                  { :slug => 'new-zealand', :name => 'New Zealand'},
+                  { :slug => 'vancouver', :name => 'Vancouver'},
+                  { :slug => 'austin', :name => 'Austin'}]
+  content_type :json 
+  @locations.sort_by { |n| n[:name] }.to_json
+end
+
+get '/locations/:l' do
+  @users = User.all(:location => params[:l], :order => [ :created_at.desc ])
+  unless params[:format] == 'json'
+    haml :list
+  else
+    content_type :json, 'charset' => 'utf-8'
+    @users.to_json
+  end
 end
 
 # === Styles ===============================

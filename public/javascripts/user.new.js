@@ -20,5 +20,12 @@ $(function(){
   	});
   
   });
+  
+  $.get('/locations/all', function(data){  
+    $.each(data, function(index, value){
+      $('#location select').append('<option value="'+value.slug+'">'+value.name+'</option')
+    })
+    $('#location select').selectmenu({style:'dropdown'});
+  })
 
 });

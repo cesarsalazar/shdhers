@@ -1,6 +1,7 @@
 source :rubygems
 source :gemcutter
 
+gem "rack-flash"
 gem "sinatra"
 gem "sinatra-reloader"
 gem "sinatra-content-for"

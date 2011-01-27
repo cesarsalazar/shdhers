@@ -5,7 +5,7 @@
       = @title || 'SHDH.me | A simple, yet comprehensive directory of SHDH participants.'
     %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     %link{:rel => 'stylesheet', :href => 'http://fonts.googleapis.com/css?family=Ubuntu', :type => 'text/css'}
-    %script{ :src => 'http://code.jquery.com/jquery-1.4.4.min.js', :type => 'text/javascript' }
+    %script{ :src => 'http://code.jquery.com/jquery-1.4.3.min.js', :type => 'text/javascript' }
     = yield_content :head
   %body
     #header
@@ -16,4 +16,7 @@
         %a{:href => '/all'} SHDH participants.
       %a{:href => "http://github.com/cesarsalazar/shdhers", :target => 'blank'}
         %img{:style => "position: absolute; top: 0; right: 0; border: 0;", :src => "https://assets1.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_gray_6d6d6d.png&path=", :alt => "Fork me on GitHub"}
+    - [:error, :notice].each do |type|
+      - if message = flash[type]
+        .flash{:class => type}= message
     = yield

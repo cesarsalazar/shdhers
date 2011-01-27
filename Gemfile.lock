@@ -68,6 +68,7 @@ DEPENDENCIES
   dm-timestamps
   dm-validations
   haml
+  rack-flash
   sass
   sinatra
   sinatra-content-for
