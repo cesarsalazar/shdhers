@@ -77,7 +77,7 @@ post '/new' do
 	@tags.each do |t|
 		@tag = Tag.first_or_create(:name => t)	
 	end
-	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","interests","experience","location"].each do |s|
+	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","tag","interests","experience","location","locations"].each do |s|
 	  if s == params[:user][:slug]
 	    redirect "/new", :notice => 'You are trying to use a reserved word as slug'
     end
@@ -184,7 +184,8 @@ get '/locations/all' do
                   { :slug => 'hermosillo', :name => 'Hermosillo'},
                   { :slug => 'new-zealand', :name => 'New Zealand'},
                   { :slug => 'vancouver', :name => 'Vancouver'},
-                  { :slug => 'austin', :name => 'Austin'}]
+                  { :slug => 'austin', :name => 'Austin'},
+                  { :slug => 'merida', :name => 'Mérida'}]
   content_type :json 
   @locations.sort_by { |n| n[:name] }.to_json
 end
