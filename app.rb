@@ -179,6 +179,7 @@ get '/locations/all' do
   @locations  =  [{ :slug => 'mexico-city', :name => 'Mexico City'},
                   { :slug => 'sv', :name => ' Silicon Valley (original)'},
                   { :slug => 'guanajuato', :name => 'Guanajuato'},
+                  { :slug => 'guadalajara', :name => 'Guadalajara'},
                   { :slug => 'villahermosa', :name => 'Villahermosa'},
                   { :slug => 'dc', :name => 'Washington, DC'},
                   { :slug => 'hermosillo', :name => 'Hermosillo'},
