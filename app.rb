@@ -37,6 +37,9 @@ class User
   property :created_at,       DateTime
   property :updated_at,       DateTime
 
+  has n, :taggings
+  has n, :tags, :through => :taggings
+  
 end
 
 class Tag
@@ -46,7 +49,19 @@ class Tag
 	property :id,			Serial
 	property :name, 	String, 	:required => true,	:unique => true
 	
-end     
+	has n, :taggings
+	has n, :users, :through => :taggings
+	
+end
+
+class Tagging
+
+  include DataMapper::Resource
+  
+  belongs_to :user, :key => true
+  belongs_to :tag,  :key => true
+  
+end
 
 DataMapper.auto_upgrade!
 
@@ -73,16 +88,17 @@ end
 post '/new' do
   @interests = params[:user][:interests] || []
   @expertise = params[:user][:expertise] || []
-  @tags =  @interests + @expertise
-	@tags.each do |t|
-		@tag = Tag.first_or_create(:name => t)	
-	end
 	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","tag","interests","experience","location","locations"].each do |s|
 	  if s == params[:user][:slug]
 	    redirect "/new", :notice => 'You are trying to use a reserved word as slug'
     end
   end
   @user = User.new(params[:user])
+  @tags =  @interests + @expertise
+  @tags.each do |t|
+	@tag = Tag.first_or_create(:name => t)	
+	@user.tags << @tag
+  end
   if @user.save
     redirect "/all" 
   else
@@ -175,7 +191,8 @@ post '/tags/new' do
 end
 
 get '/tags/:t' do
-  @users = User.all(:interests => params[:t])
+  @raw_tag = params[:t]
+  @tag = Tag.first(:name => params[:t])
   haml :tag
 end
 

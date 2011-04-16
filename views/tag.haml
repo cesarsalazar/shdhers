@@ -1,8 +1,31 @@
 - content_for :head do
-  %link{:rel => 'stylesheet', :href => '/stylesheets/tag.css', :type => 'text/css', :media => 'all'}
+  %link{:rel => 'stylesheet', :href => '/stylesheets/user.list.css', :type => 'text/css', :media => 'all'}
+  %script{:src => '/javascripts/jquery.quicksearch.js', :type => 'text/javascript'}
+  %script{:src => '/javascripts/user.list.js', :type => 'text/javascript'}
   
 #content
-  %h1 Specific Tag
-  %p This functionality will be available in a future implementation
-  - @users.each do |user|
-    %p= user.slug
+  %h1
+    Specific Tag:
+    %span= @raw_tag
+  %p= @tag
+  - if @tag.nil?
+    %p
+      Tag
+      %span= @raw_tag
+      not found
+  - else
+    %ul.users
+    - @tag.users.each do |user|
+      %li.user
+        .name
+          %a{:href => '/'+user.slug}= [user.first_name, user.last_name].join(' ');
+        - unless user.interests.nil?
+          .interests
+            %h3 Interests
+            - user.interests.each do |interest|
+              %a.tag{:href => '/tags/'+interest}= interest
+        - unless user.expertise.nil?
+          .expertise
+            %h3 Expertise
+            - user.expertise.each do |experience|
+              %a.tag{:href => '/tags/'+experience}= experience
