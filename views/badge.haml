@@ -1,0 +1,32 @@
+!!! Strict
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      = @title || 'SHDH.me | A simple, yet comprehensive directory of SHDH participants.'
+    %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+    %link{:rel => 'stylesheet', :href => 'http://fonts.googleapis.com/css?family=Ubuntu', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => '/stylesheets/user.badge.css', :type => 'text/css', :media => 'all'}
+    %script{ :src => 'http://code.jquery.com/jquery-1.4.3.min.js', :type => 'text/javascript' }
+  %body
+    #content
+      %h1= @user.first_name
+      %h2= @user.last_name
+      - unless @user.twitter.length < 1 
+        %h4
+          %span @
+          %span>= @user.twitter
+      - unless @user.github.length < 1 
+        %h3 Github:
+        %p= @user.github
+      - unless @user.interests.nil? 
+        #interests
+          %h3 Me interesa esto:
+          %ul
+          - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
+            %li= interest
+      - unless @user.expertise.nil?
+        #expertise
+          %h3 Tengo experiencia en esto:
+          %ul
+          - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
+            %li= experience

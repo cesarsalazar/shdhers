@@ -102,6 +102,12 @@ get '/all' do
   end
 end
 
+#Badge
+
+get '/:slug/badge' do
+  @user = User.get(params[:slug])
+  haml :badge, :layout => false
+end
 
 #Update
 get '/:slug/edit' do
@@ -186,7 +192,7 @@ get '/locations/all' do
                   { :slug => 'new-zealand', :name => 'New Zealand'},
                   { :slug => 'vancouver', :name => 'Vancouver'},
                   { :slug => 'austin', :name => 'Austin'},
-                  { :slug => 'merida', :name => 'Mérida'}]
+                  { :slug => 'merida', :name => 'Merida'}]
   content_type :json 
   @locations.sort_by { |n| n[:name] }.to_json
 end
