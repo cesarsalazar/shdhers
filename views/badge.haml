@@ -20,13 +20,13 @@
         %p= @user.github
       - unless @user.interests.nil? 
         #interests
-          %h3 Me interesa esto:
+          %h3 Me interesa:
           %ul
           - @user.interests.sort! { |a,b| a <=> b}.each do |interest|
             %li= interest
       - unless @user.expertise.nil?
         #expertise
-          %h3 Tengo experiencia en esto:
+          %h3 Tengo experiencia en:
           %ul
           - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
             %li= experience
