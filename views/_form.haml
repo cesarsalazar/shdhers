@@ -1,0 +1,71 @@
+%fieldset
+  %h2
+    %span.number 1.
+    %span Provide some basic information
+  #name.field
+    %label{:for => 'first_name'} Name
+    .composite
+      %input.text{:type => 'text', :name => 'user[first_name]', :value => @user.first_name}
+      %p.note First Name
+    .composite
+      %input.text{:type => 'text', :name => 'user[last_name]', :value => @user.last_name}
+      %p.note Last Name
+  #slug.field
+    %label{:for => 'username'} Slug
+    %input.text{:type => 'text', :name => 'user[slug]', :value => @user.slug}
+    %p.note This is your unique URL
+  - unless @user.saved?
+    #email.field
+      %label{:for => 'email'} Email
+      %input.text{:type => 'text', :name => 'user[email]', :value => @user.email}
+      %p.note Private and spamless. We promise.
+%fieldset
+  %h2
+    %span.number 2.
+    %span How can people find more about you?
+  #twitter.field
+    %p
+      %span.http http://twitter.com/
+      %input.text{:type => 'text', :name => 'user[twitter]', :value => @user.twitter}
+  #github.field
+    %p
+      %span.http http://github.com/
+      %input.text{:type => 'text', :name => 'user[github]', :value => @user.github}
+  #personal.field
+    %p
+      %span.http http://
+      %input.text{:type => 'text', :name => 'user[personal]', :value => @user.personal}
+%fieldset
+  %h2
+    %span.number 3.
+    %span What are you interested in?
+  #interests.field
+    %label{:for => 'interests'} Interest Tags
+    %ul#interests_field.taggable.tagit
+      - (@user.interests || []).each do |interest|
+        %li= interest
+    %p.note Maybe you're not super experienced at some of these, but you're willing to learn
+%fieldset
+  %h2
+    %span.number 4.
+    %span What do you have experience at?
+  #expertise.field
+    %label{:for => 'experience'} Expertise Tags
+    %ul#expertise_field.taggable
+      - (@user.expertise || []).each do |expertise|
+        %li= expertise
+    %p.note Maybe you're not super excited about some of these, but you can always help others
+%fieldset
+  %h2
+    %span.number 5.
+    %span What's the event you attend regularly?
+  #location.field
+    %select{:name => 'user[location]', 'data-value' => @user.location}
+- if @user.saved? # Editing
+  %fieldset
+    %h3 Enter your email to save your changes
+    #email.field
+      %label{:for => 'email'} Email
+      %input.text{:type => 'text', :name => 'user[email]' }
+%fieldset.submit
+  %input.submit{:type => 'submit', :value => locals[:label]}

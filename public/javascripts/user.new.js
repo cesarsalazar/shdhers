@@ -21,10 +21,15 @@ $(function(){
   
   });
   
-  $.get('/locations/all', function(data){  
+  $.get('/locations/all', function(data){
+    console.log($('#location select').data('value'));
     $.each(data, function(index, value){
-      $('#location select').append('<option value="'+value.slug+'">'+value.name+'</option')
-    })
+      var option = $('<option value="'+value.slug+'">'+value.name+'</option>');
+      $('#location select').append(option);
+      if(value.slug == $('#location select').data('value')) {
+          option.attr('selected', true);
+      }
+    });
     $('#location select').selectmenu({style:'dropdown'});
   })
 
