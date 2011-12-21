@@ -1,17 +1,17 @@
 (function($) {
 
 	$.fn.taggable = function(options) {
-		
+
 		const BACKSPACE	= 8;
 		const ENTER			= 13;
 		const SPACE			= 32;
 		const COMMA			= 44;
-		
+
 		var el = this;
 
 		el.addClass("tagit").html("<li class='tagit-new'><input class='tagit-input' type='text' /></li>");
 
-		var tag_input = el.find(".tagit-input");		
+		var tag_input = el.find(".tagit-input");
 
 		$(this).click(function(e){
 			if (e.target.tagName == 'A') {
@@ -21,7 +21,7 @@
 				tag_input.focus();
 			}
 		});
-		
+
 		tag_input.keypress(function(e){
 			if (e.which == BACKSPACE && tag_input.val() == "") {
 					$(el).children(".tagit-choice:last").remove();
@@ -38,9 +38,9 @@
 		});
 
 		tag_input.autocomplete({
-			
-			source: options.availableTags, 
-			
+
+			source: options.availableTags,
+
 			select: function(event,ui){
 				if ( is_new(ui.item.value) ) {
 					create_choice(ui.item.value);
@@ -52,7 +52,7 @@
         var current = this.value;
         var suggested = $(this).data("autocomplete").menu.element.find("li:first-child a").text();
         this.value = suggested;
-        this.setSelectionRange(current.length, suggested.length);      
+        this.setSelectionRange(current.length, suggested.length);
       }
 		});
 
@@ -65,7 +65,7 @@
 			})
 			return is_new;
 		}
-		
+
 		var create_choice = function(value){
 			var el  = "<li class='tagit-choice'>";
 			el += value;

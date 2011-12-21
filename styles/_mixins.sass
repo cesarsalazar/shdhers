@@ -6,10 +6,10 @@
   font-family: 'League Gothic'
   line-height: 100%
   text-rendering: optimizeLegibility
-  
+
 @mixin letterpress($offset: 1px, $size: 1px, $color: #FFFFFF)
   text-shadow: 0 $offset $size $color
-  
+
 @mixin typo-size($size: 1em)
   font-size: $size
   line-height: $size
@@ -24,14 +24,14 @@
 @mixin centered($width: 960px)
   margin: 0 auto
   width: $width
-  
+
 @mixin clear
   overflow: hidden
-  
+
 @mixin layout($columns, $width, $padding)
   width: $width/$columns - ($padding)
-  padding-right: $padding 
-  
+  padding-right: $padding
+
 @mixin horizontal-list($margin: 0)
   list-style: none
   display: inline
@@ -49,7 +49,7 @@
   background: $white
   padding: 30px
 
-@mixin vertical-tabs  
+@mixin vertical-tabs
   li
     line-height: 2em
     font-size: 1.2em
@@ -57,10 +57,10 @@
     &:hover
       background-color: $light_gray
     a
-      display: block  
+      display: block
       &:hover
-        text-decoration: none  
-      
+        text-decoration: none
+
 @mixin tabbed-edit-combo
   #menu
     width: 27%
@@ -105,11 +105,11 @@
     padding: 0.5em
     background: $light_gray
     border: 1px solid $light_gray*0.9
-    
+
 @mixin dialog
   @include round-corners(1em)
   padding: 1em
-        
+
 //Sidebar
 
 @mixin sidebar
@@ -120,7 +120,7 @@
   h2
     margin-top: 0.5em
     @include letterpress(2px)
-    
+
 
 
 //Stylishness mixins
@@ -130,9 +130,9 @@
   -moz-border-radius: $radius
   -khtml-border-radius: $radius
   border-radius: $radius
-    
+
 @mixin box-shadow($value: 0px 1px 4px rgba(0,0,0,0.25))
-  -moz-box-shadow: $value  
+  -moz-box-shadow: $value
   -webkit-box-shadow: $value
   box-shadow: $value
 
@@ -188,12 +188,12 @@
   text-align: center
   @include round-corners($radius)
   padding: 10px 5px
-  
+
 @mixin button-roundness
   background-image: url('/images/bg_button_roundness.png')
   background-repeat: repeat-x
   background-position: 50% 0
-  
+
 @mixin fb_connect
   text-indent: -6000px
   display: block
@@ -204,7 +204,7 @@
 @mixin open-in-new-window
   padding-right: 20px
   background: transparent url('/images/open_in_new_window.png') no-repeat scroll 100% 50%
-  
+
 
 // Tables
 

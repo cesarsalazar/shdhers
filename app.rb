@@ -8,7 +8,7 @@ require 'haml'
 require 'sass'
 require 'dm-core'
 require 'dm-validations'
-require 'dm-migrations' 
+require 'dm-migrations'
 require 'dm-timestamps'
 require 'dm-serializer/to_json'
 
@@ -18,16 +18,16 @@ enable :sessions
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/shdhers.sqlite3")
 
 class User
-  
+
   include DataMapper::Resource
-  
+
   property :slug,         String,     :key => true
-  
+
   validates_uniqueness_of :slug, :message => "There's already a user with this slug"
-  
+
   property :first_name,       String,     :required => true
   property :last_name,        String,     :required => true
-  property :email,            String,     :format => :email_address,  :unique => true    
+  property :email,            String,     :format => :email_address,  :unique => true
   property :twitter,          String
   property :github,           String
   property :personal,         String
@@ -40,13 +40,13 @@ class User
 end
 
 class Tag
-	
+
   include DataMapper::Resource
-	
+
 	property :id,			Serial
 	property :name, 	String, 	:required => true,	:unique => true
-	
-end     
+
+end
 
 DataMapper.auto_upgrade!
 
@@ -59,7 +59,7 @@ end
 
 # === Home ===============================
 
-get '/' do 
+get '/' do
   haml :index, :layout => false
 end
 
@@ -75,7 +75,7 @@ post '/new' do
   @expertise = params[:user][:expertise] || []
   @tags =  @interests + @expertise
 	@tags.each do |t|
-		@tag = Tag.first_or_create(:name => t)	
+		@tag = Tag.first_or_create(:name => t)
 	end
 	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","tag","interests","experience","location","locations"].each do |s|
 	  if s == params[:user][:slug]
@@ -84,7 +84,7 @@ post '/new' do
   end
   @user = User.new(params[:user])
   if @user.save
-    redirect "/all" 
+    redirect "/all"
   else
     redirect "/new", :notice => 'Something went wrong'
   end
@@ -141,7 +141,7 @@ post '/:slug/delete' do
     redirect "/list"
   else
     redirect "/#{@user.username}"
-  end  
+  end
 end
 
 #Show single
@@ -165,11 +165,11 @@ get '/tags/all' do
 	content_type :json
 	@tags.to_json(:only => [:name])
 end
-	
+
 post '/tags/new' do
 	@tags = params[:tags]
 	@tags.each do |t|
-		@tag = Tag.first_or_create(:name => t)	
+		@tag = Tag.first_or_create(:name => t)
 	end
 	redirect '/'
 end
@@ -193,7 +193,7 @@ get '/locations/all' do
                   { :slug => 'vancouver', :name => 'Vancouver'},
                   { :slug => 'austin', :name => 'Austin'},
                   { :slug => 'merida', :name => 'Merida'}]
-  content_type :json 
+  content_type :json
   @locations.sort_by { |n| n[:name] }.to_json
 end
 
