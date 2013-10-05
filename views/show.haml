@@ -7,12 +7,12 @@
     %span= @user.last_name
   #about
     %h2 Find out more about me here
-    - unless @user.twitter.length < 1 
+    - unless @user.twitter.length < 1
       #twitter
         %h3 Twitter
-        %p 
+        %p
           %a{:href => 'http://twitter.com/'+@user.twitter, :target => 'blank'} http://twitter.com/#{@user.twitter}
-    - unless @user.github.length < 1        
+    - unless @user.github.length < 1
       #github
         %h3 Github
         %p
@@ -20,7 +20,7 @@
     - unless @user.personal.length < 1
       #personal
         %h3 Personal website
-        %p 
+        %p
           %a{:href => 'http://'+@user.personal, :target => 'blank'} http://#{@user.personal}
   - unless @user.interests.nil?
     #interests

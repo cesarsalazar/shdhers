@@ -3,7 +3,7 @@
 - Slug uniqueness validation
 - Forbidden slugs
 - After server side validation fails, return user to /new without loosing input data
-- Filter by tag 
+- Filter by tag
 - Link directly to custom search (e.g. http://shdh.me?s=ruby+games)
 
 == Done ==

@@ -1,7 +1,7 @@
 @import 'select_replacement'
 //Base styles
 
-  
+
 input, textarea, select, option, button
   font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Helvetica, Arial, sans-serif
   font-size: 1em
@@ -20,10 +20,10 @@ label
   margin-top: 0.5em
   margin-right: 2em
   margin-bottom: 0.2em
-  
-input.text, input.file, textarea 
+
+input.text, input.file, textarea
   line-height: 1.3em
-  
+
 select
 
 option
@@ -38,7 +38,7 @@ ul
   input
     margin-right: 0.5em
     float: left
-  
+
 input.radio
 
 input.checkbox
@@ -47,7 +47,7 @@ input.submit, button.submit
   @include submit
   @include button-roundness
   margin: 1em 0
-  
+
 p.note
   color: $gray
   font-size: 0.85em
@@ -60,25 +60,25 @@ p.note
   border-bottom: 1px solid $warning_light
   padding: 1em
   background: $warning_dark
-  
+
 //Validation
 
 .valid
   input
     background-color: $valid_light
 
-.invalid  
+.invalid
   background-color: $invalid_light
   p.message
     margin-top: 0.5em
     margin-bottom: 0
     font-size: 0.85em
     color: $invalid_dark
-    
+
 p.note.invalid
   color: $invalid_dark
   background-color: transparent
-    
+
 //Large inputs
 
 @mixin label_left

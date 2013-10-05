@@ -11,14 +11,14 @@
     #content
       %h1= @user.first_name
       %h2= @user.last_name
-      - unless @user.twitter.length < 1 
+      - unless @user.twitter.length < 1
         %h4
           %span @
           %span>= @user.twitter
-      - unless @user.github.length < 1 
+      - unless @user.github.length < 1
         %h3 Github:
         %p= @user.github
-      - unless @user.interests.nil? 
+      - unless @user.interests.nil?
         #interests
           %h3 Me interesa:
           %ul
