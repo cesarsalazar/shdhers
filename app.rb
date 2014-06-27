@@ -67,6 +67,7 @@ end
 
 # Create
 get '/new' do
+  @user = User.new
   haml :new
 end
 
@@ -75,7 +76,7 @@ post '/new' do
   @expertise = params[:user][:expertise] || []
   @tags =  @interests + @expertise
 	@tags.each do |t|
-		@tag = Tag.first_or_create(:name => t)	
+		@tag = Tag.first_or_create(:name => t)
 	end
 	["all","new","create","edit","update","list","show","error","user","shdh","devhouse","superhappydevhouse","delete","tags","tag","interests","experience","location","locations"].each do |s|
 	  if s == params[:user][:slug]
@@ -117,10 +118,15 @@ end
 
 post '/:slug/edit' do
   @user = User.get(params[:slug])
-  if @user.update(params[:user])
-    redirect "/#{@user.username}/edit"
+  email = params[:user].delete('email')
+  if @user.email != email
+    redirect "/#{@user.slug}/edit", :notice => "You need to enter your email in order to edit your profile"
   else
-    redirect "/#{@user.username}"
+    if @user.update(params[:user])
+      redirect "/#{@user.slug}"
+    else
+      redirect "/#{@user.slug}/edit", :notice => "Sorry, we couldn't save your changes"
+    end
   end
 end
 

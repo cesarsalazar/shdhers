@@ -9,6 +9,7 @@
 		
 		var el = this;
 
+        var existing = this.find('li').detach();
 		el.addClass("tagit").html("<li class='tagit-new'><input class='tagit-input' type='text' /></li>");
 
 		var tag_input = el.find(".tagit-input");		
@@ -62,9 +63,9 @@
 				if (value == $(this).children("input").val()) {
 					is_new = false;
 				}
-			})
+			});
 			return is_new;
-		}
+		};
 		
 		var create_choice = function(value){
 			var el  = "<li class='tagit-choice'>";
@@ -75,7 +76,11 @@
 			var li_search_tags = tag_input.parent();
 			$(el).insertBefore(li_search_tags);
 			tag_input.val("");
-		}
+		};
+
+        existing.each(function() {
+            create_choice($(this).text());
+        });
 	};
 
 })(jQuery);

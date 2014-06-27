@@ -36,3 +36,6 @@
       - @user.expertise.sort! { |a,b| a <=> b}.each do |experience|
         %li
           %a{:href => '/tags/'+experience}= experience
+
+  %span.edit
+    %a{ :href => "/#{@user.slug}/edit" } Want to add some more? Edit your profile
